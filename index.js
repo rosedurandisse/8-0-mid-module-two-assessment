@@ -187,12 +187,12 @@ function getAllMoviesReleasedAtOrBeforeYear(movies,givenYear) {
 //using map to make a new object with title and the rotten tomato score
 function getRottenTomatoesScoreByMovie(movies) {
   let newObject = {};
-  movies.map(eachFilm => 
-    newObject[eachFilm.title] = eachFilm.ratings.find( ({source,value}) => {
-      if (source === 'Rotten Tomatoes') {
-      console.log(value);
-      return value
-      }}))
+  movies.map(eachFilm => {
+    let RTR = eachFilm.ratings.find( ({source,value}) => {
+    return source === 'Rotten Tomatoes'; 
+    })
+    newObject[eachFilm.title] = RTR.value;
+  })
 return newObject
 }
 console.log(getRottenTomatoesScoreByMovie(exampleMovies));
