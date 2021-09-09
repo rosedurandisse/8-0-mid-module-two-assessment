@@ -89,7 +89,7 @@ function findById(movies, lookingID) {
 }
 
 
-console.log(findById(exampleMovies,'t'))
+// console.log(findById(exampleMovies,'t'))
 /**
  * filterByGenre()
  * -----------------------------
@@ -112,8 +112,13 @@ console.log(findById(exampleMovies,'t'))
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
-
+function filterByGenre(movies,givenGenre) {
+  if (movies.length == 0) {
+    throw 'There are no movies listed'
+  }
+  return movies.filter(({genre}) => genre.toLowerCase().includes(givenGenre.toLowerCase()))
+}
+console.log(filterByGenre(exampleMovies,'MySterY'))
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
  * -----------------------------
