@@ -118,7 +118,7 @@ function filterByGenre(movies,givenGenre) {
   }
   return movies.filter(({genre}) => genre.toLowerCase().includes(givenGenre.toLowerCase()))
 }
-console.log(filterByGenre(exampleMovies,'MySterY'))
+// console.log(filterByGenre(exampleMovies,'MySterY'))
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
  * -----------------------------
@@ -143,8 +143,23 @@ console.log(filterByGenre(exampleMovies,'MySterY'))
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
 
+
+function getAllMoviesReleasedAtOrBeforeYear(movies,givenYear) {
+  //split the released dates into an array
+  //compare the given year with the 3rd element (2nd index)
+  //return the object of movies that match
+  if (movies.length == 0) {
+    throw 'There are no movies listed'
+  }
+  return movies.filter(eachFilm => {
+  releasedDate = Number(eachFilm.released.split(' ')[2]);
+  if (releasedDate <= givenYear)
+  return true
+  })
+}
+
+console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000))
 /**
  * getRottenTomatoesScoreByMovie()
  * -----------------------------
