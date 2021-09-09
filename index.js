@@ -159,7 +159,7 @@ function getAllMoviesReleasedAtOrBeforeYear(movies,givenYear) {
   })
 }
 
-console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000))
+// console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000))
 /**
  * getRottenTomatoesScoreByMovie()
  * -----------------------------
@@ -184,7 +184,18 @@ console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000))
       { "James and the Giant Peach": "91%" },
     ];
  */
-function getRottenTomatoesScoreByMovie() {}
+//using map to make a new object with title and the rotten tomato score
+function getRottenTomatoesScoreByMovie(movies) {
+  let newObject = {};
+  movies.map(eachFilm => 
+    newObject[eachFilm.title] = eachFilm.ratings.find( ({source,value}) => {
+      if (source === 'Rotten Tomatoes') {
+      console.log(value);
+      return value
+      }}))
+return newObject
+}
+console.log(getRottenTomatoesScoreByMovie(exampleMovies));
 
 // Do not change anything below this line.
 module.exports = {
